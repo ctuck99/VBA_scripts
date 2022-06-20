@@ -1,0 +1,18 @@
+Sub Inline_Image()
+  Dim myShape As Shape
+  
+  ' Checks to see if any images are selected
+  If Selection.InlineShapes.Count > 0 Then
+    Set myShape = Selection.InlineShapes(1).ConvertToShape
+  ElseIf Selection.ShapeRange.Count > 0 Then
+    Set myShape = Selection.ShapeRange(1)
+  Else
+    MsgBox "No image is selected."
+ Exit Sub
+ End If
+ 
+ ' Sets image wrap style
+ With myShape
+    .WrapFormat.Type = wdWrapInline
+ End With
+End Sub
